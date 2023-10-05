@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <style>
+        body{
+            background-image: url("https://res.cloudinary.com/practicaldev/image/fetch/s--BuPz-p40--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nphrgz8yfnjylrwfr0yl.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+        h1,h2{
+            color: white;
+        }
+        .con{
+            background-color: rgb(225,225,225,0.5);
+            height: 80%;
+            width: 40%;
+            margin-top: 5%;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+
+        }
+        button{
+            margin-top: 50px;
+            width: 10rem;
+            height: 2rem;
+            background-color: crimson;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="con">
+        <h1>People Entered</h1>
+        <h2 id="count"></h2>
+        <button onclick="AddId()">Add</button>
+        <button onclick="Save()">Save</button>
+        <p id="save"></p>
+    </div>
+    <script>
+        var val = 0;
+        SavedData = [];
+        function AddId(){
+            val += 1;
+            document.getElementById("count").innerHTML = val;
+        }
+        function Save(){
+            var date = new Date();
+            SavedData.push({count: val , time: date})
+            display();
+        }
+        function display(){
+            var savedString = " ";
+            for(var i = 0; i < SavedData.length;i++){
+                savedString += SavedData[i].time + ": " + SavedData[i].count + "<br>";
+                document.getElementById("save").innerHTML = savedString;
+            }
+        }
+    </script>
+</body>
+</html>
